@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<!-- 加入日志 -->
+	<settings>
+		<setting name="logImpl" value="LOG4J"/>
+	</settings>
+	<!-- 插件 -->
+	<plugins>
+		<plugin interceptor="com.github.pagehelper.PageInterceptor"></plugin>
+	</plugins>
+	<!-- 别名 -->
+	<!-- 加载mybait数据库操作的映射文件 -->
+	<!-- <mappers>
+		<mapper resource="com/sxt/mapping/AttachmentMapper.xml" />
+		<mapper resource="com/sxt/mapping/FolderMapper.xml" />
+		<mapper resource="com/sxt/mapping/UserMapper.xml" />
+	</mappers> -->
+</configuration>

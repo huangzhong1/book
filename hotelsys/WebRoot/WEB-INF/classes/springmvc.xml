@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 头文件 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- 扫描组件注解 -->
+	<context:component-scan base-package="com.sxt.controller"></context:component-scan>
+
+	<!-- 扫描mvc注解 -->
+	<mvc:annotation-driven></mvc:annotation-driven>
+
+	<!-- 配置视图解析器，配置前后缀 -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		 <!-- <property name="prefix" value="/WEB-INF/jsp/"></property>
+		 <property name="suffix" value=".jsp"></property> -->
+	</bean>
+
+	<!-- 拦截器配置 -->
+	<!-- <mvc:interceptors>
+		<mvc:interceptor> -->
+			<!-- 拦截的url，省略项目名 -->
+			<!-- <mvc:mapping path="/**"/> -->
+			<!-- 不被拦截的url -->
+			<!-- <mvc:exclude-mapping path="/main/tologin*"/>
+			<mvc:exclude-mapping path="/main/login*"/>
+			<mvc:exclude-mapping path="/index*"/>
+			<bean class="com.sxt.intercepor.LoginInterceptor"></bean> -->
+	<!-- 	</mvc:interceptor>
+	</mvc:interceptors> -->
+	
+	<!-- <mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**"/>
+			<mvc:exclude-mapping path="/login/tologin*"/>
+			<mvc:exclude-mapping path="/login/login*"/>
+			<mvc:exclude-mapping path="/index*"/>
+			<bean class="com.sxt.sys.interceptor.LoginInterceptor"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors> -->
+
+	<!-- 文件上传 -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="defaultEncoding" value="UTF-8"></property>
+		<property name="uploadTempDir" value="/upload"></property>
+		<property name="maxUploadSize" value="102400000"></property>
+	</bean>
+	
+	<!-- 过滤静态资源 -->
+	<mvc:default-servlet-handler/>
+
+</beans>
